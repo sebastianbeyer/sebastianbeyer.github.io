@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>DestinE Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/sb-admin.css') }}" rel="stylesheet">
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">DestinE</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="/dashboard">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">My Dashboard</li>
+      </ol>
+      <!-- here begins -->
+      <!-- Example DataTables Card-->
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Historic Simulation <span class="badge badge-success">running</span></div>
+        <div class="card-body">
+          <h4>Total progress</h4>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>Currently at chunk 40 out of 360</p>
+
+          <h4>current chunk</h4>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>Currently at hour 120 out of 71200</p>
+
+          <h4>completed chunks</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>SLURM ID</th>
+                  <th>end timestep (h)</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>SDPD</th>
+                </tr>
+              </thead>
+              <tbody id="chunk-table">
+                <tr>
+                  <td>1</td>
+                  <td>3403909</td>
+                  <td>11270</td>
+                  <td>2024-01-04:22:10</td>
+                  <td>2024-01-05:04:13</td>
+                  <td>150</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>3404202</td>
+                  <td>25202</td>
+                  <td>2024-01-06:12:10</td>
+                  <td>2024-01-09:04:33</td>
+                  <td>120</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> FDB <span class="badge badge-danger">not yet working</span></div>
+        <div class="card-body">
+          <h4>location</h4>
+          <code>/scratch/project_465000454/sbeyer/production_fdb_tco1279_historic/</code>
+          <h4>latest file</h4>
+          <code>/scratch/project_465000454/sbeyer/production_fdb_tco1279_historic/HEALPix_grids/root/d1:climate-dt:CMIP6:hist:1:IFS:1:a0hg:clte:19900329</code>
+          <h4>HEALPix</h4>
+          <p>total disk usage: 5T</p>
+          <h4>latlon</h4>
+          <p>total disk usage: 2T</p>
+          <h4>native</h4>
+          <p>total disk usage: 4T</p>
+
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Project quota <span class="badge badge-danger">not yet working</span></div>
+        <div class="card-body">
+          <h4>projappl</h4>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>projappl: Used Quota - 647T/825T (78.42%), Used Files - 35M/50M (70.00%)</p>
+          <h4>scratch</h4>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 67%;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>scratch: Used Quota - 1.2P/1.8P (66.67%), Used Files - 68M/100M (68.00%)</p>
+          <h4>flash</h4>
+          <div class="progress" style="height: 20px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p>flash: Used Quota - 959G/110T (0.87%), Used Files - 236K/10M (2.36%)</p>
+
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>sbeyer</small>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script src="{{ url_for('static', filename='js/customer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/order.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/message.js') }}"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+
+    <script>
+
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher('b74d332a9311935374ab', {
+        cluster: 'eu'
+      });
+
+      var channel = pusher.subscribe('my-channel');
+      channel.bind('my-event', function(data) {
+        alert(JSON.stringify(data));
+      });
+
+      $(document).ready(function(){
+
+      var dataTable = $("#dataTable").DataTable()
+      var completedChunks = pusher.subscribe('chunks');
+      completedChunks.bind('add', function(data) {
+      var date = new Date();
+
+      dataTable.row.add([
+          data.number,
+          data.slurmid,
+          data.end_step,
+          data.start,
+          data.end,
+          data.sdpd
+        ]).draw( false );
+          //`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`,
+      }
+      )
+      })
+    </script>
+
+  </div>
+</body>
+</html>
+

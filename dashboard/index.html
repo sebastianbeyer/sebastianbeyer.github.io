@@ -42,13 +42,13 @@
 
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Historic Simulation <span class="badge badge-success">running</span></div>
+          <i class="fa fa-table"></i> Historic Simulation <span class="badge badge-warning">queueing 😭</span></div>
         <div class="card-body">
           <h4>Total progress</h4>
           <div class="progress" style="height: 20px;">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <p>Currently at chunk 40 out of 360</p>
+          <p>Currently at chunk 3 out of 360</p>
 
           <h4>current chunk</h4>
           <div class="progress" style="height: 20px;">
@@ -90,12 +90,12 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">demo data</div>
       </div>
 
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> FDB <span class="badge badge-danger">not yet working</span></div>
+          <i class="fa fa-table"></i> FDB </div>
         <div class="card-body">
           <h4>location</h4>
           <code>/scratch/project_465000454/sbeyer/production_fdb_tco1279_historic/</code>
@@ -109,15 +109,15 @@
           <p>total disk usage: 4T</p>
 
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">demo data</div>
       </div>
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Project quota <span class="badge badge-danger">not yet working</span></div>
+          <i class="fa fa-table"></i> Project quota </div>
         <div class="card-body">
           <h4>projappl</h4>
           <div class="progress" style="height: 20px;">
-            <div class="progress-bar bg-warning" role="progressbar" style="width: 78%;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-warning" id="projappl-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <p>projappl: Used Quota - 647T/825T (78.42%), Used Files - 35M/50M (70.00%)</p>
           <h4>scratch</h4>
@@ -132,8 +132,124 @@
           <p>flash: Used Quota - 959G/110T (0.87%), Used Files - 236K/10M (2.36%)</p>
 
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">demo data</div>
       </div>
+
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> queue status </div>
+        <div class="card-body">
+          <h3>standard</h3>
+          <div class="progress">
+            <div id="standard-idle" class="progress-bar bg-success" role="progressbar" style="width: 3.8%" aria-valuenow="3.8" aria-valuemin="0" aria-valuemax="100"> 105 idle</div>
+            <div id="standard-alloc" class="progress-bar bg-warning" role="progressbar" style="width: 93.8%" aria-valuenow="93.8" aria-valuemin="0" aria-valuemax="100"> 2572 allocated</div>
+            <div id="standard-other" class="progress-bar bg-danger"  role="progressbar" style="width: 2.4%" aria-valuenow="2.4" aria-valuemin="0" aria-valuemax="100"> 65 other</div>
+          </div>
+          <h3>debug</h3>
+          <div class="progress">
+            <div id="debug-idle" class="progress-bar bg-success" role="progressbar" style="width: 3.8%" aria-valuenow="3.8" aria-valuemin="0" aria-valuemax="100"> 105 idle</div>
+            <div id="debug-alloc" class="progress-bar bg-warning" role="progressbar" style="width: 93.8%" aria-valuenow="93.8" aria-valuemin="0" aria-valuemax="100"> 2572 allocated</div>
+            <div id="debug-other" class="progress-bar bg-danger"  role="progressbar" style="width: 2.4%" aria-valuenow="2.4" aria-valuemin="0" aria-valuemax="100"> 65 other</div>
+          </div>
+          <h3>standard-g</h3>
+          <div class="progress">
+            <div id="standard-g-idle" class="progress-bar bg-success" role="progressbar" style="width: 3.8%" aria-valuenow="3.8" aria-valuemin="0" aria-valuemax="100"> 105 idle</div>
+            <div id="standard-g-alloc" class="progress-bar bg-warning" role="progressbar" style="width: 93.8%" aria-valuenow="93.8" aria-valuemin="0" aria-valuemax="100"> 2572 allocated</div>
+            <div id="standard-g-other" class="progress-bar bg-danger"  role="progressbar" style="width: 2.4%" aria-valuenow="2.4" aria-valuemin="0" aria-valuemax="100"> 65 other</div>
+          </div>
+          <h3>dev-g</h3>
+          <div class="progress">
+            <div id="dev-g-idle" class="progress-bar bg-success" role="progressbar" style="width: 83.3%" aria-valuenow="83.3" aria-valuemin="0" aria-valuemax="100"> 40 idle</div>
+            <div id="dev-g-alloc" class="progress-bar bg-warning" role="progressbar" style="width: 8.3%" aria-valuenow="8.3" aria-valuemin="0" aria-valuemax="100"> 4 allocated</div>
+            <div id="dev-g-other" class="progress-bar bg-danger"  role="progressbar" style="width: 8.3%" aria-valuenow="8.3" aria-valuemin="0" aria-valuemax="100"> 4 other</div>
+          </div>
+          <h3>small-g</h3>
+          <div class="progress">
+            <div id="small-g-idle" class="progress-bar bg-success" role="progressbar" style="width: 83.3%" aria-valuenow="83.3" aria-valuemin="0" aria-valuemax="100"> 40 idle</div>
+            <div id="small-g-alloc" class="progress-bar bg-warning" role="progressbar" style="width: 8.3%" aria-valuenow="8.3" aria-valuemin="0" aria-valuemax="100"> 4 allocated</div>
+            <div id="small-g-other" class="progress-bar bg-danger"  role="progressbar" style="width: 8.3%" aria-valuenow="8.3" aria-valuemin="0" aria-valuemax="100"> 4 other</div>
+          </div>
+
+        </div>
+        <div class="card-footer small text-muted">demo data</div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> job info </div>
+        <div class="card-body">
+          <h3>pending</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered" id="pendingJobTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>SLURM ID</th>
+                  <th>Job Name</th>
+                  <th>Partition</th>
+                  <th>Number of Nodes</th>
+                  <th>Job State</th>
+                  <th>Submit Time</th>
+                  <th>Start Time</th>
+                  <th>Queing Time</th>
+                  <th>Elapsed Time</th>
+                  <th>Exit Code</th>
+                </tr>
+              </thead>
+              <tbody id="chunk-table">
+                <tr>
+                  <td>0000000</td>
+                  <td>FakeJob</td>
+                  <td>dev-g</td>
+                  <td>512</td>
+                  <td>PENDING</td>
+                  <td>2024-01-04:22:10</td>
+                  <td>unknown</td>
+                  <td>unknown</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>run in the last 3 days:</h3>
+            <table class="table table-bordered" id="endedJobTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>SLURM ID</th>
+                  <th>Job Name</th>
+                  <th>Partition</th>
+                  <th>Number of Nodes</th>
+                  <th>Job State</th>
+                  <th>Submit Time</th>
+                  <th>Start Time</th>
+                  <th>Queing Time</th>
+                  <th>Elapsed Time</th>
+                  <th>Exit Code</th>
+                </tr>
+              </thead>
+              <tbody id="chunk-table">
+                <tr class="table-success">
+                  <td>0000000</td>
+                  <td>FakeJob</td>
+                  <td>dev-g</td>
+                  <td>512</td>
+                  <td>COMPLETED</td>
+                  <td>2024-01-04:22:10</td>
+                  <td>2024-01-05:04:13</td>
+                  <td>4:33</td>
+                  <td>45:10</td>
+                  <td>0:0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="card-footer small text-muted">demo data</div>
+      </div>
+
     </div>
     <footer class="sticky-footer">
       <div class="container">
@@ -165,29 +281,175 @@
         cluster: 'eu'
       });
 
-      var channel = pusher.subscribe('my-channel');
-      channel.bind('my-event', function(data) {
-        alert(JSON.stringify(data));
-      });
+
+
 
       $(document).ready(function(){
 
-      var dataTable = $("#dataTable").DataTable()
-      var completedChunks = pusher.subscribe('chunks');
-      completedChunks.bind('add', function(data) {
-      var date = new Date();
+        var projappl_bar = document.getElementById('projappl-bar');
+        var disk_quota = pusher.subscribe('disk_quota');
+        disk_quota.bind('update', function(data) {
+          projappl_bar.setAttribute('aria-valuenow',data.value);
+          projappl_bar.setAttribute('style', data.text);
+        }
+        )
 
-      dataTable.row.add([
-          data.number,
-          data.slurmid,
-          data.end_step,
-          data.start,
-          data.end,
-          data.sdpd
+        var queue_standard_idle = document.getElementById('standard-idle');
+        var queue_standard_alloc = document.getElementById('standard-alloc');
+        var queue_standard_other = document.getElementById('standard-other');
+        var queue_standard = pusher.subscribe('queue_standard');
+        queue_standard.bind('update', function(data) {
+            queue_standard_idle.setAttribute('aria-valuenow',data.idlepercent);
+            queue_standard_idle.setAttribute('style', data.idlepercenttext);
+            queue_standard_idle.innerHTML = data.idle;
+            queue_standard_alloc.setAttribute('aria-valuenow',data.allocatedpercent);
+            queue_standard_alloc.setAttribute('style', data.allocatedpercenttext);
+            queue_standard_alloc.innerHTML = data.allocated;
+            queue_standard_other.setAttribute('aria-valuenow',data.otherpercent);
+            queue_standard_other.setAttribute('style', data.otherpercenttext);
+            queue_standard_other.innerHTML = data.other;
+          }
+        )
+        var queue_debug_idle  = document.getElementById('debug-idle');
+        var queue_debug_alloc = document.getElementById('debug-alloc');
+        var queue_debug_other = document.getElementById('debug-other');
+        var queue_debug = pusher.subscribe('queue_debug');
+        queue_debug.bind('update', function(data) {
+            queue_debug_idle.setAttribute('aria-valuenow',data.idlepercent);
+            queue_debug_idle.setAttribute('style', data.idlepercenttext);
+            queue_debug_idle.innerHTML = data.idle;
+            queue_debug_alloc.setAttribute('aria-valuenow',data.allocatedpercent);
+            queue_debug_alloc.setAttribute('style', data.allocatedpercenttext);
+            queue_debug_alloc.innerHTML = data.allocated;
+            queue_debug_other.setAttribute('aria-valuenow',data.otherpercent);
+            queue_debug_other.setAttribute('style', data.otherpercenttext);
+            queue_debug_other.innerHTML = data.other;
+          }
+        )
+
+        var queue_standardg_idle  = document.getElementById('standard-g-idle');
+        var queue_standardg_alloc = document.getElementById('standard-g-alloc');
+        var queue_standardg_other = document.getElementById('standard-g-other');
+        var queue_standardg = pusher.subscribe('queue_standard-g');
+        queue_standardg.bind('update', function(data) {
+            queue_standardg_idle.setAttribute('aria-valuenow',data.idlepercent);
+            queue_standardg_idle.setAttribute('style', data.idlepercenttext);
+            queue_standardg_idle.innerHTML = data.idle;
+            queue_standardg_alloc.setAttribute('aria-valuenow',data.allocatedpercent);
+            queue_standardg_alloc.setAttribute('style', data.allocatedpercenttext);
+            queue_standardg_alloc.innerHTML = data.allocated;
+            queue_standardg_other.setAttribute('aria-valuenow',data.otherpercent);
+            queue_standardg_other.setAttribute('style', data.otherpercenttext);
+            queue_standardg_other.innerHTML = data.other;
+          }
+        )
+
+        var queue_devg_idle  = document.getElementById('dev-g-idle');
+        var queue_devg_alloc = document.getElementById('dev-g-alloc');
+        var queue_devg_other = document.getElementById('dev-g-other');
+        var queue_devg = pusher.subscribe('queue_dev-g');
+        queue_devg.bind('update', function(data) {
+            queue_devg_idle.setAttribute('aria-valuenow',data.idlepercent);
+            queue_devg_idle.setAttribute('style', data.idlepercenttext);
+            queue_devg_idle.innerHTML = data.idle;
+            queue_devg_alloc.setAttribute('aria-valuenow',data.allocatedpercent);
+            queue_devg_alloc.setAttribute('style', data.allocatedpercenttext);
+            queue_devg_alloc.innerHTML = data.allocated;
+            queue_devg_other.setAttribute('aria-valuenow',data.otherpercent);
+            queue_devg_other.setAttribute('style', data.otherpercenttext);
+            queue_devg_other.innerHTML = data.other;
+          }
+        )
+
+        var queue_smallg_idle  = document.getElementById('small-g-idle');
+        var queue_smallg_alloc = document.getElementById('small-g-alloc');
+        var queue_smallg_other = document.getElementById('small-g-other');
+        var queue_smallg = pusher.subscribe('queue_small-g');
+        queue_smallg.bind('update', function(data) {
+            queue_smallg_idle.setAttribute('aria-valuenow',data.idlepercent);
+            queue_smallg_idle.setAttribute('style', data.idlepercenttext);
+            queue_smallg_idle.innerHTML = data.idle;
+            queue_smallg_alloc.setAttribute('aria-valuenow',data.allocatedpercent);
+            queue_smallg_alloc.setAttribute('style', data.allocatedpercenttext);
+            queue_smallg_alloc.innerHTML = data.allocated;
+            queue_smallg_other.setAttribute('aria-valuenow',data.otherpercent);
+            queue_smallg_other.setAttribute('style', data.otherpercenttext);
+            queue_smallg_other.innerHTML = data.other;
+          }
+        )
+
+
+        var dataTable = $("#dataTable").DataTable()
+        var completedChunks = pusher.subscribe('chunks');
+        completedChunks.bind('add', function(data) {
+          $("#dataTable tbody tr").remove()
+          dataTable.row.add([
+            data.number,
+            data.slurmid,
+            data.end_step,
+            data.start,
+            data.end,
+            data.sdpd
         ]).draw( false );
-          //`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`,
-      }
-      )
+        }
+        )
+
+        var pendingJobTable = $("#pendingJobTable").DataTable()
+        var pendingJobStatus = pusher.subscribe('pendingJobs');
+        pendingJobStatus.bind('add', function(data) {
+          pendingJobTable.row.add([
+            data.slurmid,
+            data.jobname,
+            data.partition,
+            data.nnodes,
+            data.jobstate,
+            data.submittime,
+            data.starttime,
+            data.queueingtime,
+            data.elapsedtime,
+            data.exitcode,
+        ]).draw( false );
+         }
+        )
+        pendingJobStatus.bind('clear', function(data) {
+          pendingJobTable.clear();
+         }
+        )
+
+        var endedJobTable = $("#endedJobTable").DataTable(
+          {
+    "createdRow": function( row, data, dataIndex ) {
+             if ( data[4] == "FAILED" ) {
+               $(row).addClass('table-danger');
+             }
+             if ( data[4] == "COMPLETED" ) {
+               $(row).addClass('table-success');
+             }
+            }
+          }
+        )
+        var endedJobStatus = pusher.subscribe('endedJobs');
+        endedJobStatus.bind('add', function(data) {
+          var node = endedJobTable.row.add([
+            data.slurmid,
+            data.jobname,
+            data.partition,
+            data.nnodes,
+            data.jobstate,
+            data.submittime,
+            data.starttime,
+            data.queueingtime,
+            data.elapsedtime,
+            data.exitcode,
+        ]).draw( false ).node();
+          //$(node).addClass('table-danger');
+         }
+        )
+        endedJobStatus.bind('clear', function(data) {
+          endedJobTable.clear();
+         }
+        )
+
       })
     </script>
 
